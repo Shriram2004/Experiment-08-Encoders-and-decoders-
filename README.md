@@ -1,8 +1,8 @@
 # Experiment-08- Encoders-and-decoders 
-### AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+## AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
+## HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED:   Quartus prime
+## THEORY 
 
 ## Encoders
 Binary code of N digits can be used to store 2N distinct elements of coded information. This is what encoders and decoders are used for. Encoders convert 2N lines of input into a code of N bits and Decoders decode the N bits into 2N lines.
@@ -59,38 +59,77 @@ D7 = X Y Z
 
 
 
-### PROGRAM 
-/*
+## PROGRAM 
+
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+
+Developed by: Shriram R
+
+RegisterNumber:  212221240053
+### Encoder:
+~~~
+module ex8(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
+input d0,d1,d2,d3,d4,d5,d6,d7;
+output a,b,c;
+or(a,d4,d5,d6,d7);
+or(b,d2,d3,d6,d7);
+or(c,d1,d3,d5,d7);
+endmodule
+~~~
+### Decoder:
+~~~
+module ex008(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
+input a,b,c;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+assign d0=(~a&~b&~c); 
+assign d1=(~a&~b&c);
+assign d2=(~a&b&~c);
+assign d3=(~a&b&c);
+assign d4=(a&~b&~c);
+assign d5=(a&~b&c);
+assign d6=(a&b&~c);
+assign d7=(a&b&c);
+endmodule
+~~~
 
 
 
 
 
 
-### RTL LOGIC  
+## RTL LOGIC  
+### Encoder:
+![](e1.png)
+
+### Decoder:
+![](ed1.png)
 
 
 
 
 
 
+## TIMING DIGRAMS  
+### Encoder:
+![](e2.png)
+![](e3.png)
+![](e4.png)
+
+### Decoder:
+![](ed2.png)
 
 
-### TIMING DIGRAMS  
 
-
-
-
-
-### TRUTH TABLE 
-
+## TRUTH TABLE 
+### Encoder:
+![](e5.png)
+### Decoder:
+![](ed3.png)
 
 
 
 
 
 ### RESULTS 
+The implementation 8 to 3 Encoder and 3to8 Decoder using verilog and validate its outputs is successfully completed.
+
